@@ -31,4 +31,8 @@ pub trait ContextTraitExt {
     /// Return `None` if the context doesn't use EGL.
     // The pointer will become invalid when the context is destroyed.
     unsafe fn get_egl_display(&self) -> Option<*const raw::c_void>;
+
+    unsafe fn get_context_obj(&self) -> Option<*const raw::c_void> {
+        None
+    }
 }

@@ -22,4 +22,9 @@ impl ContextTraitExt for Context {
     unsafe fn get_egl_display(&self) -> Option<*const raw::c_void> {
         None
     }
+
+    #[inline]
+    unsafe fn get_context_obj(&self) -> Option<*const raw::c_void> {
+        Some(self.context.context_obj())
+    }
 }

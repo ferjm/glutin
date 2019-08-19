@@ -292,6 +292,14 @@ impl Context {
             Context::HeadlessContext(ref c) => *c.context.deref() as *mut _,
         }
     }
+
+    #[inline]
+    pub unsafe fn context_obj(&self) -> *mut raw::c_void {
+        match self {
+            Context::WindowedContext(w) => w.context.CGLContextObj() as *mut _,
+            Context::HeadlessContext(h) => h.context.CGLContextObj() as *mut _,
+        }
+    }
 }
 
 struct IdRef(id);
